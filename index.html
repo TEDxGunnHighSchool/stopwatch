@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    
     <div id="wrapper" style="width: 100%;">
         <div id="hero">
             <div class="header">
                 <center>
                   <p class="lead">
 		  </p>
-		  <button class="start">Start</button>
-		  <button class="stop">Stop</button>
+		    <button class="start">Start</button>
+		    <button class="stop">Stop</button> 
                 </center>
             </div>
         </div>
@@ -24,16 +25,26 @@
     <script src="js/Stopwatch.min.js"></script>
     <script>
       var stopwatch = new Stopwatch();
-      
-      var start = document.querySelector('.start');
+      var isRunning = false;
+      function toggle() {
+        if (isRunning) {
+            stopwatch.pause()
+            isRunning = false;
+        } else {
+            isRunning = true;
+            stopwatch.start()
+        }
+      }
+
+      var start = document.querySelector('body');
       start.addEventListener('click', function() {
-      stopwatch.start();
+          toggle();
       });
       
-      var pause = document.querySelector('.stop');
-      pause.addEventListener('click', function() {
-      stopwatch.pause();
-      });
+    //   var pause = document.querySelector('.stop');
+    //   pause.addEventListener('click', function() {
+    //   stopwatch.pause();
+    //   });
             
       var time = document.querySelector('.lead');
       setInterval(function() {
